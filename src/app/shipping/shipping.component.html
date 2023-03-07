@@ -1,0 +1,15 @@
+<a routerLink="/cart">
+  <button class="back">Volver</button>
+</a>
+
+<h2>SHIPPING PRICES</h2>
+
+<div class="shipping-item" *ngFor="let shipping of shippingCosts | async">
+  <span>{{ shipping.type }}</span>
+  <span>{{ shipping.price | currency }}</span>
+</div>
+
+<!-- 
+  Async devuelve el valor más reciente de un flujo de datos y continuúa siendo útil
+  durante la vida del componente. Cuando Angular destruye el componente para automáticamente.
+ -->

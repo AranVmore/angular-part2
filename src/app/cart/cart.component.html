@@ -1,0 +1,29 @@
+<a [routerLink]="['/']">
+  <button class="back">Volver</button>
+</a>
+
+<h2>CART</h2>
+
+<!-- LISTADO PRECIOS -->
+<p>
+  <a routerLink="/shipping">Shipping Prices</a>
+</p>
+
+<!-- PRODUCTOS AGREGADOS AL CARRITO -->
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.name }}</span>
+  <span>{{ item.price | currency }}</span>
+</div>
+
+<!-- FORMULARIO PAGO -->
+<!-- el enlace de propiedades de formGroup para enlazar el checkoutForm a la etiqueta form en la plantilla. 
+-->
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+  <div>
+    <label for="name">Nombre</label>
+    <input id="name" type="text" formControlName="name" />
+    <label for="address">Dirección</label>
+    <input id="address" type="text" formControlName="address" />
+  </div>
+  <button class="button" type="submit">Comprar</button>
+</form>

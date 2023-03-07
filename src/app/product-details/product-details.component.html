@@ -1,0 +1,15 @@
+<a [routerLink]="['/']">
+  <button class="back">Volver</button>
+</a>
+
+<h2>PRODUCT DETAILS</h2>
+
+<!-- | currency = transforma los datos, pasa los datos numericos del precio a un string -->
+<div *ngIf="product">
+  <h3>{{ product.name }}</h3>
+  <h4>{{ product.price | currency }}</h4>
+  <p>{{ product.description }}</p>
+
+  <!-- botón añadir al carrito -->
+  <button (click)="addToCart(product)">Buy</button>
+</div>

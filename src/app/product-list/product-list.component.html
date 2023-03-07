@@ -1,0 +1,38 @@
+<h2>Products</h2>
+
+<!-- 
+Con *ngFor iteramos sobre la lista ya predefinida 'products' 
+*ngFor es un bucle que repetirá el div para cada producto de la lista
+Esta lista está creada en products.ts
+Las directivas estructurales (se inician con un *) como *ngFor dan forma o remodelan el DOM 
+Con la sintaxis de interpolación {{ }} representamos el valor de la propiedad
+Con la propiedad [ ] podemos usar el valor de la propiedad en una expresión de la template
+*ngIf es el bucle if, especificamos que cumpla la condición
+-->
+
+<!-- index as productId: para asignar cada índice en la matriz products a la variable productId cuando se itera sobre la lista. -->
+<div *ngFor="let product of products; index as productId">
+  <h3>
+    <a
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', productId]"
+    >
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+
+  <!-- la función share() está creada en "product-list-component.ts" -->
+  <button (click)="share()">Share</button>
+
+  <!-- Para que funcione importar a app.modules.ts la carpeta product-alerts -->
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
